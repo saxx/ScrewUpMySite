@@ -13,7 +13,7 @@
     I know, I know, this is absolutely cheap and makes no sense, but it is just my first play-around with SignalR. If you want to see the real cool, check out <a href="http://signalr.net/">http://signalr.net/</a>.
 </p>
 <p>
-    by Hannes Sachsenhofer, fork at GitHub.
+    By Hannes Sachsenhofer, fork at <a href="https://github.com/saxx/ScrewUpMySite">GitHub</a>.
 </p>
 
 @section scripts {
@@ -30,11 +30,11 @@
 
             $("#button").button();
 
-            styleHub.client.addStyleUpdate = function(style) {
+            styleHub.client.addStyleUpdate = function (style) {
                 sums.updateStyle(style);
             };
 
-            $.connection.hub.start().done(function() {
+            $.connection.hub.start().done(function () {
                 sumsEditor.bindTo($("#button"));
                 sumsEditor.updateMethod = styleHub.server.sendStyleUpdate;
             });
