@@ -6,7 +6,8 @@ namespace ScrewUpMySite
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js", "~/Scripts/jquery-ui-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include("~/Scripts/jquery-ui-{version}.js"));
             bundles.Add(new ScriptBundle("~/bundles/signalr").Include("~/Scripts/jquery.signalR-*"));
             bundles.Add(new ScriptBundle("~/bundles/colorpicker").Include("~/Scripts/jquery.colorpicker.js"));
             bundles.Add(new ScriptBundle("~/bundles/sums").Include("~/Scripts/ScrewUpMySite.js"));
