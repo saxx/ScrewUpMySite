@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Screw up my site";
+}
+
+<h1>Screw up my site</h1>
+<p>
+    Use the real-time web to screw up this site. Open it in different browser windows simultaneously to see the cool.
+</p>
+<p>
+    <input type="button" id="button" value="Alright, let my screw around" />
+</p>
+<p>
+    I know, I know, this is absolutely cheap and makes no sense, but it is just my first play-around with SignalR. If you want to see the real cool, check out <a href="http://signalr.net/">http://signalr.net/</a>.
+</p>
+<p>
+    by Hannes Sachsenhofer, fork at GitHub.
+</p>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/colorpicker")
+    @Scripts.Render("~/bundles/signalr")
+    @Scripts.Render("~/bundles/sums")
+    <script src="~/signalr/hubs" type="text/javascript"></script>
+
+    <script>
+        $(function () {
+            var styleHub = $.connection.styleHub;
+
+            $("#button").button();
+
+            styleHub.client.addStyleUpdate = function(style) {
+                sums.updateStyle(style);
+            };
+
+            $.connection.hub.start().done(function() {
+                sumsEditor.bindTo($("#button"));
+                sumsEditor.updateMethod = styleHub.server.sendStyleUpdate;
+            });
+        });
+    </script>
+}
